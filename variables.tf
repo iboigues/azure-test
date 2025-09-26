@@ -1,19 +1,8 @@
-variable "location" {
-  type = string
-  default = "Italy North"
-}
-
-variable "resource_group_name" {
-  type = string
-  default = "rg-blob-storage"  
-}
-
-variable "storage_account_name" {
-  type = string
-  default = "blobdemo1941123"
-}
-
-variable "container_name" {
-  type = string
-  default = "container-demo"
+variable "storage" {
+  type = object({
+    location = string
+    resource_group_name = string  
+    storage_account_name = string
+    container_name = string
+  })
 }
