@@ -32,4 +32,4 @@ jobs:
         run: terraform plan --var-file=dev/terraform.tfvars
         
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve --var-file=dev/terraform.tfvars
