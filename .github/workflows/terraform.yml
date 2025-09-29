@@ -26,10 +26,10 @@ jobs:
           echo "ARM_SUBSCRIPTION_ID=${{ secrets.ARM_SUBSCRIPTION_ID }}" >> $GITHUB_ENV
           
       - name: Terraform Init
-        run: terraform init
+        run: terraform init --backend-config=dev/backend.tfvars
 
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan --var-file=dev/terraform.tfvars
         
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve --var-file=dev/terraform.tfvars
