@@ -26,10 +26,13 @@ jobs:
           echo "ARM_SUBSCRIPTION_ID=${{ secrets.ARM_SUBSCRIPTION_ID }}" >> $GITHUB_ENV
 
       - name: Terraform Init
-        run: terraform init -chdir=dev
+        working-directory: ./dev
+        run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan -chdir=dev --var-file=terraform.tfvars
+        working-directory: ./dev
+        run: terraform plan --var-file=terraform.tfvars
         
       - name: Terraform Apply
-        run: terraform apply -chdir=dev -auto-approve --var-file=terraform.tfvars
+        working-directory: ./dev
+        run: terraform apply -auto-approve --var-file=terraform.tfvars
