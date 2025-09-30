@@ -25,14 +25,11 @@ jobs:
           echo "ARM_TENANT_ID=${{ secrets.ARM_TENANT_ID }}" >> $GITHUB_ENV
           echo "ARM_SUBSCRIPTION_ID=${{ secrets.ARM_SUBSCRIPTION_ID }}" >> $GITHUB_ENV
 
-      - name: dev
-        run: cd dev
-
       - name: Terraform Init
-        run: terraform init
+        run: terraform init -chdir=dev
 
       - name: Terraform Plan
-        run: terraform plan --var-file=terraform.tfvars
+        run: terraform plan -chdir=dev --var-file=terraform.tfvars
         
       - name: Terraform Apply
-        run: terraform apply -auto-approve --var-file=terraform.tfvars
+        run: terraform apply -chdir=dev -auto-approve --var-file=terraform.tfvars
